@@ -32,14 +32,15 @@ Open [Blanja App](https://drive.google.com/file/d/1NyuUadxaMX5B6nriM81ZzTUWAATB_
 ### Photo Documentation
 
 ## Login Screen
-![Login_Blanjapedia]<img src="https://user-images.githubusercontent.com/52094775/108528532-1983d400-7306-11eb-87ab-82d25aaad166.jpg" width="20%">
+<img src="https://user-images.githubusercontent.com/52094775/108528532-1983d400-7306-11eb-87ab-82d25aaad166.jpg" width="25%" align="center">
 
 ## Main Screen
-![MainPages_Blanjapedia](https://user-images.githubusercontent.com/52094775/108528581-230d3c00-7306-11eb-9cc5-b8fceae47ba6.jpg)
+<img src="https://user-images.githubusercontent.com/52094775/108528581-230d3c00-7306-11eb-9cc5-b8fceae47ba6.jpg" width="25%">
 
 ## My Bag Screen
-![MyBag_Blanjapedia](https://user-images.githubusercontent.com/52094775/108528634-33251b80-7306-11eb-9a39-aae53f22e3a9.jpg)
+<img src="https://user-images.githubusercontent.com/52094775/108528634-33251b80-7306-11eb-9a39-aae53f22e3a9.jpg" width="25%">
 
 ## My Profile Screen
-![MyProfile_Blanjapedia](https://user-images.githubusercontent.com/52094775/108528664-3b7d5680-7306-11eb-8991-acff5868f3ad.jpg)
+<img src="https://user-images.githubusercontent.com/52094775/108528664-3b7d5680-7306-11eb-8991-acff5868f3ad.jpg" width=25%">
+
 
