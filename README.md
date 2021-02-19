@@ -32,8 +32,9 @@ Open [Blanja App](https://drive.google.com/file/d/1NyuUadxaMX5B6nriM81ZzTUWAATB_
 ### Photo Documentation
 
 ## Login Screen
+<div align="center' width="20%">
 ![Login_Blanjapedia](https://user-images.githubusercontent.com/52094775/108528532-1983d400-7306-11eb-87ab-82d25aaad166.jpg)
-
+<div>
 ## Main Screen
 ![MainPages_Blanjapedia](https://user-images.githubusercontent.com/52094775/108528581-230d3c00-7306-11eb-9cc5-b8fceae47ba6.jpg)
 
