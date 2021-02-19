@@ -32,7 +32,7 @@ Open [Blanja App](https://drive.google.com/file/d/1NyuUadxaMX5B6nriM81ZzTUWAATB_
 ### Photo Documentation
 
 ## Login Screen
-<div text-align="center">
+<div style="text-align: center">
    <img src="https://user-images.githubusercontent.com/52094775/108528532-1983d400-7306-11eb-87ab-82d25aaad166.jpg" width="25%">
 </div>
 
