@@ -22,7 +22,7 @@ import {
   handleScheduledNotification,
 } from '../../../notification';
 
-const CheckOut = ({checkout, navigation}) => {
+const CheckOut = ({checkout, clearCart, navigation}) => {
   const [address, setAddress] = useState({});
   const [checkbox, setCheckbox] = useState(false);
   const [checkbox2, setCheckbox2] = useState(false);
@@ -223,6 +223,7 @@ const CheckOut = ({checkout, navigation}) => {
                   text: 'OK',
                   onPress: () => {
                     transaction(),
+                    clearCart(),
                       showNotification(
                         'Yeaah!',
                         'Klik! untuk melihat lebih lanjut detail transaksi anda',
@@ -354,6 +355,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    clearCart: () => dispatch(clearCart()),
     clearCheckout: () => dispatch(clearCheckout()),
   };
 };

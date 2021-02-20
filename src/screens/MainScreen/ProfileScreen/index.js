@@ -176,7 +176,7 @@ const ProfileScreen = ({navigation, logout}) => {
               <View style={{marginRight: 10}}>
                 <Image
                   style={styles.img}
-                  source={require('../../../assets/images/myprofile.png')}
+                  source={require('../../../assets/images/default-profile.png')}
                 />
               </View>
               <View style={{marginLeft: 10, justifyContent: 'center'}}>
@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.red,
     paddingVertical: 10,
     bottom: 0,
-    marginBottom: 10,
+    marginBottom: 20,
     borderRadius: 50,
     alignSelf: 'center',
     alignItems: 'center',
