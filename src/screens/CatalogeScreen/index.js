@@ -162,7 +162,7 @@ export default function CatalogeScreen({navigation, route}) {
             <View style={[styles.itemContainer, {backgroundColor: '#ffffff'}]}>
               <View style={{paddingHorizontal: '15%'}}>
                 <Image
-                  source={{uri: `${JSON.parse(item.product_photo).shift()}`}}
+                  source={{uri: `${API_URL}${JSON.parse(item.product_photo).shift()}`}}
                   style={{
                     borderRadius: 10,
                     width: 120,

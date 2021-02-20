@@ -134,7 +134,7 @@ const MainCatalogScreen = ({navigation, route}) => {
               <View
                 style={[styles.itemContainer, {backgroundColor: '#ffffff'}]}>
                 <Image
-                  source={{uri: `${JSON.parse(item.product_photo).shift()}`}}
+                  source={{uri: `${API_URL}${JSON.parse(item.product_photo).shift()}`}}
                   style={{borderRadius: 10, width: '100%', height: 100}}
                   resizeMode="contain"
                 />
@@ -165,7 +165,7 @@ const MainCatalogScreen = ({navigation, route}) => {
               <View
                 style={[styles.itemContainer, {backgroundColor: '#ffffff'}]}>
                 <Image
-                  source={{uri: `${JSON.parse(item.product_photo).shift()}`}}
+                  source={{uri: `${API_URL}${JSON.parse(item.product_photo).shift()}`}}
                   style={{borderRadius: 10, width: '100%', height: 100}}
                   resizeMode="contain"
                 />
@@ -195,7 +195,7 @@ const MainCatalogScreen = ({navigation, route}) => {
               <View
                 style={[styles.itemContainer, {backgroundColor: '#ffffff'}]}>
                 <Image
-                  source={{uri: `${JSON.parse(item.product_photo).shift()}`}}
+                  source={{uri: `${API_URL}${JSON.parse(item.product_photo).shift()}`}}
                   style={{borderRadius: 10, width: '100%', height: 100}}
                   resizeMode="contain"
                 />

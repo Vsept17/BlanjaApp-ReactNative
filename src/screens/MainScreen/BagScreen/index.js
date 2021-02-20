@@ -138,39 +138,40 @@ const BagScreen = ({
                   onChange={() => pickCart(item.id)}
                   style={{marginTop: 50}}
                 />
-                <Image
-                  // source={require('../../../assets/images/home3.png')}
-                  source={{uri: `${item.img}`}}
-                  resizeMode="contain"
-                  style={{
-                    borderRadius: 10,
-                    width: 110,
-                    height: 130,
-                    // width: '20%',
-                    backgroundColor: 'white',
-                  }}
-                />
+                <View style={{height: '100%', paddingVertical: 10}}>
+                  <Image
+                    source={{uri: `${API_URL}${item.img}`}}
+                    resizeMode="center"
+                    style={{
+                      borderRadius: 10,
+                      width: 110,
+                      height: '100%',
+                      backgroundColor: 'white',
+                    }}
+                  />
+                </View>
+
                 <View
                   style={{
                     flexDirection: 'column',
+                    marginVertical: 10,
                     marginHorizontal: 10,
-                    marginTop: 5,
                   }}>
-                  <View>
+                  <View
+                    style={{
+                      width: '100%',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                    }}>
                     <View
                       style={{
+                        width: '40%',
                         flexDirection: 'row',
-                        justifyContent: 'space-between',
+                        flexWrap: 'wrap',
                       }}>
-                      <View>
-                        <Text>{item.name}</Text>
-                        <View style={{flexDirection: 'row', marginTop: 7}}>
-                          <Text>Color: {item.warna}</Text>
-                          <Text style={{marginLeft: 9}}>
-                            Sizes: {item.ukuran}
-                          </Text>
-                        </View>
-                      </View>
+                      <Text>{item.name}</Text>
+                    </View>
+                    <View style={{width: '60%', marginLeft: 10}}>
                       <TouchableOpacity
                         onPress={() =>
                           Alert.alert(
@@ -190,23 +191,25 @@ const BagScreen = ({
                             {cancelable: false},
                           )
                         }>
-                        <Icon name="delete" size={30} color={colors.red} />
+                        <Icon name="delete" size={25} color={colors.red} />
                       </TouchableOpacity>
                     </View>
                   </View>
-
+                  <View style={{flexDirection: 'row', marginTop: 7}}>
+                    <Text>Color: {item.warna}</Text>
+                    <Text style={{marginLeft: 9}}>Sizes: {item.ukuran}</Text>
+                  </View>
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginTop: 20,
+                      width: '100%',
                       alignContent: 'center',
-                      justifyContent: 'center',
                     }}>
                     <View
                       style={{
                         flexDirection: 'row',
-                        justifyContent: 'center',
                         alignItems: 'center',
+                        width: '30%',
                       }}>
                       {item.qty === 1 ? (
                         <TouchableOpacity style={styles.pickSize}>
@@ -239,7 +242,7 @@ const BagScreen = ({
                     <View
                       style={{
                         marginTop: 30,
-                        marginLeft: 80,
+                        width: '70%',
                         paddingBottom: 30,
                       }}>
                       <Text>{`Rp${(item.prc * item.qty).toLocaleString(
@@ -285,8 +288,8 @@ const BagScreen = ({
           onPress={() => {
             if (cart.length === 0 && totalItems === 0) {
               return Alert.alert(
-                'Bag',
-                'Blanja dulu skuy!',
+                'Your Bag is empty',
+                `Let's go to shoping now!`,
                 [
                   {
                     text: 'OK',
@@ -312,7 +315,7 @@ const BagScreen = ({
               'CheckOut',
               sendData(),
               totalPrice,
-              clearCart(),
+              // clearCart(),
             );
           }}
           style={styles.button}>
@@ -417,7 +420,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteCart: (id) => dispatch(deleteCart(id)),
-    clearCart: () => dispatch(clearCart()),
+    // clearCart: () => dispatch(clearCart()),
     clearCheckout: () => dispatch(clearCheckout()),
     increaseQuantity: (id) => dispatch(increaseQuantity(id)),
     decreaseQuantity: (id) => dispatch(decreaseQuantity(id)),

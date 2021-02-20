@@ -104,7 +104,7 @@ const OrderDetails = ({navigation, route}) => {
                       <Image
                         style={styles.img}
                         // source={require('../../../assets/images/womanorder.png')}
-                        source={{uri: `${JSON.parse(product_photo).shift()}`}}
+                        source={{uri: `${API_URL}${JSON.parse(product_photo).shift()}`}}
                       />
                     </View>
                     <View style={{paddingVertical: 10}}>

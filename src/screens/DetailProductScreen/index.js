@@ -97,12 +97,14 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
             source={
               product.product_photo
                 ? {
-                    uri: `${JSON.parse(product.product_photo).shift()}`,
+                    uri: `${API_URL}${JSON.parse(
+                      product.product_photo,
+                    ).shift()}`,
                     resizeMode: 'contain',
                   }
                 : null
             }
-            resizeMode="contain"
+            resizeMode="center"
             // source={{uri: `${JSON.parse(product.product_photo).shift()}`}}
           />
         </View>
@@ -149,15 +151,15 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
         </View>
 
         <View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View>
+          <View style={{ width: '100%',flexDirection: 'row', justifyContent: 'space-between'}}>
+            <View style={{width: '50%', flexDirection: 'column',}}>
               <Text
                 children="Color"
                 size="l"
                 style={{fontWeight: '700', marginLeft: 5}}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                 {color.map(({id, color_hexa, color_name}) => {
                   return (
                     <TouchableOpacity
@@ -168,16 +170,16 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                         height: 40,
                         marginHorizontal: 5,
                         borderRadius: 75,
-                        backgroundColor:
-                          color_name === warna ? color_hexa : 'white',
-                        borderWidth: 15,
-                        borderColor: color_hexa,
+                        backgroundColor: color_hexa,
+                        borderWidth: 2,
+                        borderColor:
+                          color_name === warna ? 'black' : 'white',
                       }}></TouchableOpacity>
                   );
                 })}
               </View>
             </View>
-            <View style={{alignItems: 'flex-start'}}>
+            <View style={{width: '50%', alignItems: 'flex-start'}}>
               <Text
                 children="Size"
                 style={{fontWeight: '700', marginLeft: 5}}
@@ -188,6 +190,7 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
+                  flexWrap: 'wrap',
                 }}>
                 {size.map(({id, size}) => {
                   return (
@@ -281,7 +284,9 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                     <View>
                       <Image
                         // source={require('../../../assets/images/home3.png')}
-                        source={{uri: `${JSON.parse(product_photo).shift()}`}}
+                        source={{
+                          uri: `${API_URL}${JSON.parse(product_photo).shift()}`,
+                        }}
                         style={{borderRadius: 10, width: 120, height: 170}}
                       />
                       <View style={styles.rating}>
@@ -319,7 +324,7 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
             justifyContent: 'center',
             alignItems: 'center',
             marginVertical: 5,
-            marginLeft: 3
+            marginLeft: 3,
           }}>
           <TouchableOpacity
             onPress={() =>
@@ -336,7 +341,7 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                 ),
               )
             }>
-            <Text children="Add to cart" color="white"/>
+            <Text children="Add to cart" color="white" />
           </TouchableOpacity>
           {/* <ButtonSubmit bg="red" title="ADD TO CART" /> */}
         </View>
@@ -348,12 +353,15 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
             justifyContent: 'center',
             alignItems: 'center',
             marginVertical: 5,
-            marginLeft: 3
+            marginLeft: 3,
           }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat' , {
-            sellerId : product.user_id
-          })}>
-            <Text children="Chat" color="white"/>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Chat', {
+                sellerId: product.user_id,
+              })
+            }>
+            <Text children="Chat" color="white" />
           </TouchableOpacity>
           {/* <ButtonSubmit bg="red" title="Tanya Ke Penjual" /> */}
         </View>
@@ -367,12 +375,14 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'white',
     borderRadius: 25,
-    borderStyle: 'solid',
-    borderWidth: 1,
+    // borderStyle: 'solid',
+    // borderWidth: 1,
+    overflow: 'hidden'
   },
   img: {
     height: 250,
     width: '100%',
+    borderRadius: 20,
     paddingVertical: 10,
   },
   separator: {

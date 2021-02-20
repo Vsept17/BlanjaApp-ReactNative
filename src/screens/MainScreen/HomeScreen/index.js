@@ -22,7 +22,6 @@ const HomeScreen = ({navigation}) => {
   const [card, setCard] = useState([]);
   const [cardTwo, setCardTwo] = useState([]);
 
-  
   const getDataNew = async () => {
     await axios
       .get(`${API_URL}/products?keyword=created_at DESC`)
@@ -38,17 +37,17 @@ const HomeScreen = ({navigation}) => {
 
   const getDataPopular = async () => {
     await axios
-    .get(`${API_URL}/products?keyword=rating DESC`)
-    .then((res) => {
-      const cardTwo = res.data.data.products;
-      // console.log('DataPopular', cardTwo);
-      setCardTwo(cardTwo);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .get(`${API_URL}/products?keyword=rating DESC`)
+      .then((res) => {
+        const cardTwo = res.data.data.products;
+        // console.log('DataPopular', cardTwo);
+        setCardTwo(cardTwo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  
+
   // useEffect(() => {
   //   getDataNew();
   //   getDataPopular();
@@ -119,7 +118,7 @@ const HomeScreen = ({navigation}) => {
                       categories: category_name,
                     })
                   }
-                  style={{paddingRight: 10}}
+                  style={{marginHorizontal: 5}}
                   key={id}>
                   <View
                     style={{
@@ -130,25 +129,29 @@ const HomeScreen = ({navigation}) => {
                       backgroundColor: 'white',
                     }}>
                     <Image
-                      source={{uri: `${JSON.parse(product_photo).shift()}`}}
+                      source={{
+                        uri: `${API_URL}${JSON.parse(product_photo).shift()}`,
+                      }}
                       style={{
                         borderRadius: 10,
                         width: 120,
                         height: 170,
                       }}
                     />
-                    <View style={styles.rating}>
-                      <Image
-                        source={require('../../../assets/images/Star.png')}
-                      />
+                    <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
+                      <View style={styles.rating}>
+                        <Image
+                          source={require('../../../assets/images/Star.png')}
+                        />
 
-                      <Text children={rating} />
-                    </View>
-                    <View>
-                      <Text children={product_name} size={12} />
-                    </View>
-                    <View>
-                      <Text children={product_price} />
+                        <Text children={rating} />
+                      </View>
+                      <View>
+                        <Text children={product_name} size={12} />
+                      </View>
+                      <View>
+                        <Text children={`Rp.${product_price}`} />
+                      </View>
                     </View>
                   </View>
                 </TouchableOpacity>
@@ -198,7 +201,7 @@ const HomeScreen = ({navigation}) => {
                       categories: category_name,
                     })
                   }
-                  style={{marginBottom: 20, paddingRight: 10}}
+                  style={{marginBottom: 20, marginHorizontal: 5}}
                   key={id}>
                   <View
                     style={{
@@ -209,25 +212,29 @@ const HomeScreen = ({navigation}) => {
                       backgroundColor: 'white',
                     }}>
                     <Image
-                      source={{uri: `${JSON.parse(product_photo).shift()}`}}
+                      source={{
+                        uri: `${API_URL}${JSON.parse(product_photo).shift()}`,
+                      }}
                       style={{
                         borderRadius: 10,
                         width: 120,
                         height: 170,
                       }}
                     />
-                    <View style={styles.rating}>
-                      <Image
-                        source={require('../../../assets/images/Star.png')}
-                      />
+                    <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
+                      <View style={styles.rating}>
+                        <Image
+                          source={require('../../../assets/images/Star.png')}
+                        />
 
-                      <Text children={rating} />
-                    </View>
-                    <View>
-                      <Text children={product_name} size={12} />
-                    </View>
-                    <View>
-                      <Text children={product_price} />
+                        <Text children={rating} />
+                      </View>
+                      <View>
+                        <Text children={product_name} size={12} />
+                      </View>
+                      <View>
+                        <Text children={`Rp.${product_price}`} />
+                      </View>
                     </View>
                   </View>
                 </TouchableOpacity>
@@ -284,7 +291,7 @@ const styles = StyleSheet.create({
   slider: {
     marginTop: 5,
     flexDirection: 'row',
-    paddingHorizontal: 10,
+    marginHorizontal: 5
   },
 });
 
