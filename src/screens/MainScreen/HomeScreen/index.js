@@ -22,7 +22,6 @@ const HomeScreen = ({navigation}) => {
   const [card, setCard] = useState([]);
   const [cardTwo, setCardTwo] = useState([]);
 
-  
   const getDataNew = async () => {
     await axios
       .get(`${API_URL}/products?keyword=created_at DESC`)
@@ -38,17 +37,17 @@ const HomeScreen = ({navigation}) => {
 
   const getDataPopular = async () => {
     await axios
-    .get(`${API_URL}/products?keyword=rating DESC`)
-    .then((res) => {
-      const cardTwo = res.data.data.products;
-      // console.log('DataPopular', cardTwo);
-      setCardTwo(cardTwo);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .get(`${API_URL}/products?keyword=rating DESC`)
+      .then((res) => {
+        const cardTwo = res.data.data.products;
+        // console.log('DataPopular', cardTwo);
+        setCardTwo(cardTwo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  
+
   // useEffect(() => {
   //   getDataNew();
   //   getDataPopular();
@@ -130,7 +129,9 @@ const HomeScreen = ({navigation}) => {
                       backgroundColor: 'white',
                     }}>
                     <Image
-                      source={{uri: `${JSON.parse(product_photo).shift()}`}}
+                      source={{
+                        uri: `${API_URL}${JSON.parse(product_photo).shift()}`,
+                      }}
                       style={{
                         borderRadius: 10,
                         width: 120,
@@ -209,7 +210,9 @@ const HomeScreen = ({navigation}) => {
                       backgroundColor: 'white',
                     }}>
                     <Image
-                      source={{uri: `${JSON.parse(product_photo).shift()}`}}
+                      source={{
+                        uri: `${API_URL}${JSON.parse(product_photo).shift()}`,
+                      }}
                       style={{
                         borderRadius: 10,
                         width: 120,

@@ -140,7 +140,7 @@ const BagScreen = ({
                 />
                 <Image
                   // source={require('../../../assets/images/home3.png')}
-                  source={{uri: `${item.img}`}}
+                  source={{uri: `${API_URL}${item.img}`}}
                   resizeMode="contain"
                   style={{
                     borderRadius: 10,
