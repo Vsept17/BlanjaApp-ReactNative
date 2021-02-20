@@ -145,12 +145,12 @@ export default function CatalogeScreen({navigation, route}) {
       </View>
 
       <FlatGrid
-        itemDimension={130}
+        // itemDimension={130}
         data={products}
-        style={styles.gridView}
+        // style={styles.gridView}
         // staticDimension={300}
         // fixed
-        spacing={10}
+        // spacing={10}
         renderItem={({item}) => (
           <TouchableOpacity
             onPress={() =>
@@ -160,13 +160,17 @@ export default function CatalogeScreen({navigation, route}) {
               })
             }>
             <View style={[styles.itemContainer, {backgroundColor: '#ffffff'}]}>
-              <View style={{paddingHorizontal: '15%'}}>
+              <View style={{width: '100%', justifyContent: 'center'}}>
                 <Image
-                  source={{uri: `${API_URL}${JSON.parse(item.product_photo).shift()}`}}
+                  source={{
+                    uri: `${API_URL}${JSON.parse(item.product_photo).shift()}`,
+                  }}
+                  resizeMode="center"
                   style={{
                     borderRadius: 10,
                     width: 120,
                     height: 100,
+                    alignSelf: 'center',
                   }}
                 />
               </View>
@@ -175,8 +179,12 @@ export default function CatalogeScreen({navigation, route}) {
 
                 <Text children={item.rating} />
               </View>
-              <Text style={styles.itemName}>{item.product_name}</Text>
-              <Text style={styles.itemCode}>Rp.{item.product_price}</Text>
+              <View sytle={{width: '100%', flexDirection: 'row', flexWrap: 'wrap', marginVertical: 5}}>
+                <Text style={styles.itemName}>{item.product_name}</Text>
+              </View>
+              <View sytle={{width: '100%', flexDirection: 'row', flexWrap: 'wrap', marginVertical: 5}}>
+                <Text style={styles.itemCode}>Rp.{item.product_price}</Text>
+              </View>
             </View>
           </TouchableOpacity>
         )}
@@ -244,7 +252,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemContainer: {
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    flexDirection: 'column',
     borderRadius: 5,
     padding: 10,
     width: '100%',

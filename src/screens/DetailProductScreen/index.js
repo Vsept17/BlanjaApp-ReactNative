@@ -169,11 +169,12 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                         width: 40,
                         height: 40,
                         marginHorizontal: 5,
+                        marginVertical: 5,
                         borderRadius: 75,
                         backgroundColor: color_hexa,
                         borderWidth: 2,
                         borderColor:
-                          color_name === warna ? 'black' : 'white',
+                          color_name === warna ? 'black' : '#e7e3cd',
                       }}></TouchableOpacity>
                   );
                 })}
@@ -201,6 +202,7 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginHorizontal: 5,
+                        marginVertical: 5,
                         borderRadius: 75,
                         backgroundColor: size === ukuran ? 'red' : 'white',
                         borderWidth: 1,
@@ -279,16 +281,27 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                         categories: category_name,
                       })
                     }
-                    style={{paddingHorizontal: 10, marginBottom: 20}}
+                    style={{marginHorizontal: 5, marginBottom: 20}}
                     key={id}>
-                    <View>
+                    <View style={{
+                      borderWidth: 1,
+                      borderRadius: 10,
+                      borderStyle: 'solid',
+                      borderColor: '#e5e5e5',
+                      backgroundColor: 'white',
+                    }}>
                       <Image
                         // source={require('../../../assets/images/home3.png')}
                         source={{
                           uri: `${API_URL}${JSON.parse(product_photo).shift()}`,
                         }}
-                        style={{borderRadius: 10, width: 120, height: 170}}
+                        style={{
+                          borderRadius: 10,
+                          width: 120,
+                          height: 170,
+                        }}
                       />
+                      <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
                       <View style={styles.rating}>
                         <Image
                           source={require('../../assets/images/Star.png')}
@@ -296,8 +309,13 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
 
                         <Text children={rating} />
                       </View>
-                      <Text children={product_name} />
-                      <Text children={product_price} />
+                      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+                        <Text children={product_name} size={12} />
+                      </View>
+                      <View>
+                        <Text children={`Rp.${product_price}`} />
+                      </View>
+                    </View>
                     </View>
                   </TouchableOpacity>
                 );
@@ -401,6 +419,7 @@ const styles = StyleSheet.create({
   slider: {
     marginTop: 5,
     flexDirection: 'row',
+    marginHorizontal: 5
   },
 });
 

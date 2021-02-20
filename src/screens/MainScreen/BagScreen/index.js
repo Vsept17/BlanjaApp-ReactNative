@@ -289,7 +289,7 @@ const BagScreen = ({
             if (cart.length === 0 && totalItems === 0) {
               return Alert.alert(
                 'Your Bag is empty',
-                `Let's go to shoping now!`,
+                `Let's shop now!`,
                 [
                   {
                     text: 'OK',

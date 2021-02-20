@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}) => {
 
   const getDataNew = async () => {
     await axios
-      .get(`${API_URL}/products?keyword=created_at DESC`)
+      .get(`${API_URL}/products?limit=15&keyword=created_at DESC`)
       .then((res) => {
         const card = res.data.data.products;
         console.log('DataNew ', res.data.data.products);
@@ -37,7 +37,7 @@ const HomeScreen = ({navigation}) => {
 
   const getDataPopular = async () => {
     await axios
-      .get(`${API_URL}/products?keyword=rating DESC`)
+      .get(`${API_URL}/products?limit=15&keyword=rating DESC`)
       .then((res) => {
         const cardTwo = res.data.data.products;
         // console.log('DataPopular', cardTwo);
@@ -146,7 +146,7 @@ const HomeScreen = ({navigation}) => {
 
                         <Text children={rating} />
                       </View>
-                      <View>
+                      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                         <Text children={product_name} size={12} />
                       </View>
                       <View>
@@ -229,7 +229,7 @@ const HomeScreen = ({navigation}) => {
 
                         <Text children={rating} />
                       </View>
-                      <View>
+                      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                         <Text children={product_name} size={12} />
                       </View>
                       <View>
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
   slider: {
     marginTop: 5,
     flexDirection: 'row',
-    marginHorizontal: 5
+    marginHorizontal: 5,
   },
 });
 
