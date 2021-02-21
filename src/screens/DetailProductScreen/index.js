@@ -144,7 +144,12 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
             alignItems: 'center',
             marginBottom: 10,
           }}>
-          <Icon name="star" size={20} color={colors.yellow} />
+          <AirbnbRating
+            count={product.rating}
+            defaultRating={5}
+            size={12}
+            showRating={false}
+          />
           <Text children={product.rating} color="gray" />
         </View>
         <View style={{marginBottom: 13}}>
@@ -152,15 +157,19 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
         </View>
 
         <View>
-          <View style={{ width: '100%',flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={{width: '50%', flexDirection: 'column',}}>
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <View style={{width: '50%', flexDirection: 'column'}}>
               <Text
                 children="Color"
                 size="l"
                 style={{fontWeight: '700', marginLeft: 5}}
               />
-              <View
-                style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+              <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                 {color.map(({id, color_hexa, color_name}) => {
                   return (
                     <TouchableOpacity
@@ -174,8 +183,7 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                         borderRadius: 75,
                         backgroundColor: color_hexa,
                         borderWidth: 2,
-                        borderColor:
-                          color_name === warna ? 'black' : '#e7e3cd',
+                        borderColor: color_name === warna ? 'black' : '#e7e3cd',
                       }}></TouchableOpacity>
                   );
                 })}
@@ -284,13 +292,14 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                     }
                     style={{marginHorizontal: 5, marginBottom: 20}}
                     key={id}>
-                    <View style={{
-                      borderWidth: 1,
-                      borderRadius: 10,
-                      borderStyle: 'solid',
-                      borderColor: '#e5e5e5',
-                      backgroundColor: 'white',
-                    }}>
+                    <View
+                      style={{
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        borderStyle: 'solid',
+                        borderColor: '#e5e5e5',
+                        backgroundColor: 'white',
+                      }}>
                       <Image
                         // source={require('../../../assets/images/home3.png')}
                         source={{
@@ -303,23 +312,23 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                         }}
                       />
                       <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
-                      <View style={styles.rating}>
-                      <AirbnbRating
-                          count={rating}
-                          defaultRating={5}
-                          size={12}
-                          showRating={false}
-                        />
+                        <View style={styles.rating}>
+                          <AirbnbRating
+                            count={rating}
+                            defaultRating={5}
+                            size={12}
+                            showRating={false}
+                          />
 
-                        <Text children={rating} />
+                          <Text children={rating} />
+                        </View>
+                        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+                          <Text children={product_name} size={12} />
+                        </View>
+                        <View>
+                          <Text children={`Rp.${product_price}`} />
+                        </View>
                       </View>
-                      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-                        <Text children={product_name} size={12} />
-                      </View>
-                      <View>
-                        <Text children={`Rp.${product_price}`} />
-                      </View>
-                    </View>
                     </View>
                   </TouchableOpacity>
                 );
@@ -399,7 +408,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     // borderStyle: 'solid',
     // borderWidth: 1,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   img: {
     height: 250,
@@ -423,7 +432,7 @@ const styles = StyleSheet.create({
   slider: {
     marginTop: 5,
     flexDirection: 'row',
-    marginHorizontal: 5
+    marginHorizontal: 5,
   },
 });
 
