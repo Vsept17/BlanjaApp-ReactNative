@@ -13,7 +13,7 @@ import {
 import {HeaderHome} from '../../../components';
 import {Text} from '../../../components';
 import {IconStarAct} from '../../../assets/icons';
-
+import {Rating, AirbnbRating} from 'react-native-ratings';
 import {colors} from '../../../utils';
 import {API_URL} from '@env';
 
@@ -140,8 +140,11 @@ const HomeScreen = ({navigation}) => {
                     />
                     <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
                       <View style={styles.rating}>
-                        <Image
-                          source={require('../../../assets/images/Star.png')}
+                        <AirbnbRating
+                          count={rating}
+                          defaultRating={5}
+                          size={12}
+                          showRating={false}
                         />
 
                         <Text children={rating} />
@@ -223,8 +226,11 @@ const HomeScreen = ({navigation}) => {
                     />
                     <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
                       <View style={styles.rating}>
-                        <Image
-                          source={require('../../../assets/images/Star.png')}
+                        <AirbnbRating
+                          count={rating}
+                          defaultRating={5}
+                          size={12}
+                          showRating={false}
                         />
 
                         <Text children={rating} />
@@ -284,7 +290,7 @@ const styles = StyleSheet.create({
 
   rating: {
     flexDirection: 'row',
-    marginTop: 6,
+    marginTop: 5,
     alignItems: 'center',
   },
 
