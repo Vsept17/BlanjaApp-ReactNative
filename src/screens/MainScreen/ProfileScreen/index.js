@@ -269,7 +269,7 @@ const ProfileScreen = ({navigation, logout}) => {
               <View style={{marginRight: 10}}>
                 <Image
                   style={styles.img}
-                  source={require('../../../assets/images/myprofile.png')}
+                  source={require('../../../assets/images/default-profile.png')}
                 />
               </View>
               <View style={{marginLeft: 10, justifyContent: 'center'}}>
@@ -354,7 +354,7 @@ const ProfileScreen = ({navigation, logout}) => {
             </TouchableOpacity>
           </>
         )}
-        <Modal animationType="slide" transparent={true} hardwareAccelerated={true} statusBarTranslucent={true} visible={modalVisible}>
+        <Modal animationType="slide" transparent={true} hardwareAccelerated={true} visible={modalVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Are you sure want to logout?</Text>
