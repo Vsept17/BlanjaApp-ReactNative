@@ -14,7 +14,6 @@ import {ButtonSubmit, Text} from '../../components';
 // import {Picker} from '@react-native-picker/picker';
 import {colors} from '../../utils';
 import {connect, useSelector} from 'react-redux';
-import {Rating, AirbnbRating} from 'react-native-ratings';
 import {addToCart} from '../../utils/redux/action/cartAction';
 import {API_URL} from '@env';
 
