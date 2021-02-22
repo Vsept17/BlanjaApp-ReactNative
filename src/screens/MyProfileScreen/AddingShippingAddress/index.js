@@ -120,7 +120,7 @@ const AddingShippingAddress = ({navigation}) => {
         title="Save Address"
         bg="red"
         rippleColor="white"
-        onPress={() => navigation.navigate('Profile', handleSubmit())}
+        onPress={() => navigation.navigate('Shipping address', handleSubmit())}
       />
     </ScrollView>
   );

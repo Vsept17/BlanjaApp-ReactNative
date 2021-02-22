@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Rating} from 'react-native-ratings';
 import {ButtonSubmit, Text} from '../../components';
 // import {Picker} from '@react-native-picker/picker';
 import {colors} from '../../utils';
@@ -144,13 +145,15 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
             alignItems: 'center',
             marginBottom: 10,
           }}>
-          <AirbnbRating
-            count={product.rating}
-            defaultRating={5}
-            size={12}
-            showRating={false}
+          {/* <Icon name="star" size={20} color={colors.yellow} /> */}
+          <Rating
+            ratingCount={5}
+            startingValue={product.rating}
+            readonly={true}
+            imageSize={20}
+            style={{paddingRight: 5}}
           />
-          <Text children={product.rating} color="gray" />
+          <Text children={product.rating} color="gray" size="l" />
         </View>
         <View style={{marginBottom: 13}}>
           <Text children={product.product_desc} size="l" />
@@ -313,13 +316,13 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                       />
                       <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
                         <View style={styles.rating}>
-                          <AirbnbRating
-                            count={rating}
-                            defaultRating={5}
-                            size={12}
-                            showRating={false}
+                          <Rating
+                            ratingCount={5}
+                            startingValue={rating}
+                            readonly={true}
+                            imageSize={20}
+                            style={{paddingRight: 5}}
                           />
-
                           <Text children={rating} />
                         </View>
                         <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
@@ -369,6 +372,7 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                   qty,
                   ukuran,
                   warna,
+                  product.user_id,
                 ),
               )
             }>
@@ -438,8 +442,8 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id, img, name, prc, qty, ukuran, warna) =>
-      dispatch(addToCart(id, img, name, prc, qty, ukuran, warna)),
+    addToCart: (id, img, name, prc, qty, ukuran, warna, user_id) =>
+      dispatch(addToCart(id, img, name, prc, qty, ukuran, warna, user_id)),
   };
 };
 export default connect(null, mapDispatchToProps)(DetailProductScreen);

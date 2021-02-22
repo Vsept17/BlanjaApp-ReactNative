@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {CardPict, CardPictNew, IconStar, IconStarAct} from '../../assets/icons';
-
+import {API_URL} from '@env';
 import {colors, font, sizes} from '../../utils';
 
 const CardsProduct = ({navigation, name, brand, price, image, id}) => {
@@ -23,7 +23,7 @@ const CardsProduct = ({navigation, name, brand, price, image, id}) => {
           navigation.navigate('DetailPage', {itemId: id});
         }}>
         <ImageBackground
-          source={img}
+          source={API_URL + img}
           style={styles.carpict}
           imageStyle={styles.cardstyle}></ImageBackground>
         <View style={styles.star}>

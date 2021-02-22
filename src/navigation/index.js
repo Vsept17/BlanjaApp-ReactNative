@@ -215,6 +215,11 @@ const StackScreen = ({navigation}) => {
             headerShown: false,
           }}
         />
+        <Stack.Screen
+          name="Shipping address"
+          component={ShippingAddressScreen}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </SocketProvider>
   );

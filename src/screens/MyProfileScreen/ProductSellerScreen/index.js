@@ -42,7 +42,6 @@ const ProductSeller = ({navigation, route}) => {
       })
       .then((res) => {
         const product = res.data.data;
-        console.log('Anjim', product);
         setProduct(product);
       })
       .catch((err) => {
