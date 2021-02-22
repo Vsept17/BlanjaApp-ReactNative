@@ -50,32 +50,6 @@ const OrderDetails = ({navigation, route}) => {
         console.log(err);
       });
   };
-
-  const postReview = async () => {
-    const data = {
-      product_id: productId,
-      review: review,
-      rating: rating,
-    };
-    await axios
-      .post(`${API_URL}/review`, data, {
-        headers: {
-          'x-access-token': 'Bearer ' + token,
-        },
-      })
-      .then((res) => {
-        
-          setErrMsg(false);
-          console.log('Success add review');
-        
-      })
-      .catch((err) => {
-        // if (status === 403) {
-          setErrMsg(true);
-          console.log(err, 'error add rating');
-        // }
-      });
-  };
   const toastReview = () => {
     ToastAndroid.show(
       `Thank you, your feedback has been added!`,
@@ -90,15 +64,42 @@ const OrderDetails = ({navigation, route}) => {
     );
   };
 
-  const submitReview = () => {
-    postReview();
-    if (errMsg === true) {
-      toastReviewFailed();
-    } else {
-      toastReview();
-      actionSheetRef.current?.hide();
-    }
+  const postReview = async () => {
+    const data = {
+      product_id: productId,
+      review: review,
+      rating: rating,
+    };
+    await axios
+      .post(`${API_URL}/review`, data, {
+        headers: {
+          'x-access-token': 'Bearer ' + token,
+        },
+      })
+      .then((res) => {
+        // setErrMsg(false);
+        console.log('Success add review');
+        toastReview();
+        actionSheetRef.current?.hide();
+      })
+      .catch((err) => {
+        // if (status === 403) {
+        // setErrMsg(true);
+        console.log(err, 'error add rating');
+        toastReviewFailed();
+        // }
+      });
   };
+
+  // const submitReview = () => {
+  //   postReview();
+  //   if (errMsg === true) {
+  //     toastReviewFailed();
+  //   } else {
+  //     toastReview();
+  //     actionSheetRef.current?.hide();
+  //   }
+  // };
 
   useEffect(() => {
     getOrderDetail();
@@ -286,7 +287,7 @@ const OrderDetails = ({navigation, route}) => {
                         <TouchableOpacity
                           style={styles.btnReview}
                           onPress={() => {
-                            submitReview();
+                            postReview();
                           }}>
                           <Text style={{color: 'white'}}>SEND REVIEW</Text>
                         </TouchableOpacity>

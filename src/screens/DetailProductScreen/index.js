@@ -11,9 +11,10 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Rating} from 'react-native-ratings';
 import {ButtonSubmit, Text} from '../../components';
-import {Picker} from '@react-native-picker/picker';
+// import {Picker} from '@react-native-picker/picker';
 import {colors} from '../../utils';
 import {connect, useSelector} from 'react-redux';
+import {Rating, AirbnbRating} from 'react-native-ratings';
 import {addToCart} from '../../utils/redux/action/cartAction';
 import {API_URL} from '@env';
 
@@ -315,10 +316,13 @@ const DetailProductScreen = ({navigation, route, addToCart}) => {
                       />
                       <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
                         <View style={styles.rating}>
-                          <Image
-                            source={require('../../assets/images/Star.png')}
+                          <Rating
+                            ratingCount={5}
+                            startingValue={rating}
+                            readonly={true}
+                            imageSize={20}
+                            style={{paddingRight: 5}}
                           />
-
                           <Text children={rating} />
                         </View>
                         <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>

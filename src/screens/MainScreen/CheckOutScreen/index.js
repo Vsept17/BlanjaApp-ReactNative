@@ -153,12 +153,14 @@ const CheckOut = ({checkout, clearCart, navigation, route}) => {
         <Text style={styles.payment}>Payment</Text>
         <View>
           <View style={styles.checkboxcontainer}>
-            <View style={styles.master}>
-              <Image
-                source={require('../../../assets/images/mastercard.png')}
-              />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.master}>
+                <Image
+                  source={require('../../../assets/images/mastercard.png')}
+                />
+              </View>
+              <Text size="l" children="MasterCard" style={{marginLeft: 20}} />
             </View>
-            <Text size="l" children="MasterCard" style={{marginLeft: -180}} />
             <CheckBox
               tintColors={{true: '#DB3022', false: '#9B9B9B'}}
               value={checkbox}
@@ -168,14 +170,16 @@ const CheckOut = ({checkout, clearCart, navigation, route}) => {
         </View>
         <View>
           <View style={styles.checkboxcontainer}>
-            <View style={styles.master}>
-              <Image source={require('../../../assets/images/pos.png')} />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.master}>
+                <Image source={require('../../../assets/images/pos.png')} />
+              </View>
+              <Text
+                size="l"
+                children="Pos Indonesia"
+                style={{marginLeft: 20}}
+              />
             </View>
-            <Text
-              size="l"
-              children="Pos Indonesia"
-              style={{marginLeft: -160}}
-            />
             <CheckBox
               tintColors={{true: '#DB3022', false: '#9B9B9B'}}
               value={checkbox2}
@@ -185,10 +189,12 @@ const CheckOut = ({checkout, clearCart, navigation, route}) => {
         </View>
         <View>
           <View style={styles.checkboxcontainer}>
-            <View style={styles.master}>
-              <Image source={require('../../../assets/images/gopay.png')} />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.master}>
+                <Image source={require('../../../assets/images/gopay.png')} />
+              </View>
+              <Text size="l" children="Gopay" style={{marginLeft: 20}} />
             </View>
-            <Text size="l" children="Gopay" style={{marginLeft: -210}} />
             <CheckBox
               tintColors={{true: '#DB3022', false: '#9B9B9B'}}
               // value={this.state.check3}
@@ -284,7 +290,7 @@ const styles = StyleSheet.create({
   },
 
   payment: {
-    marginTop: 30,
+    marginVertical: 30,
     fontSize: 24,
     fontWeight: 'bold',
   },
@@ -303,7 +309,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     // paddingHorizontal: 15,
-    marginTop: 30,
+    marginBottom: 20,
     alignItems: 'center',
   },
 
