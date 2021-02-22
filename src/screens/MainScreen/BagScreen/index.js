@@ -45,6 +45,8 @@ const BagScreen = ({
 
   const token = useSelector((state) => state.authReducer.token);
   const user_id = useSelector((state) => state.cart.cart);
+  const userId = useSelector((state) => state.authReducer.user_id);
+  console.log('USERID BAG', userId);
 
   // useEffect(() => {
   //   getAddressUser();
@@ -120,140 +122,143 @@ const BagScreen = ({
     });
     setTotalItems(items);
     setTotalPrice(prices);
-  }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
+  }, [cart, totalPrice, totalItems, userId, setTotalPrice, setTotalItems]);
 
   return (
     <>
       <ScrollView style={styles.container}>
         <Text style={styles.bag}>My Bag</Text>
         {/* Card */}
-        {cart.length ? (
-          cart.map((item) => {
-            return (
-              <View style={styles.bag2} key={item.id}>
-                <CheckBox
-                  disabled={false}
-                  tintColors={{true: '#DB3022', false: '#9B9B9B'}}
-                  value={item.pick}
-                  onChange={() => pickCart(item.id)}
-                  style={{marginTop: 50}}
-                />
-                <View style={{height: '100%', paddingVertical: 10}}>
-                  <Image
-                    source={{uri: `${API_URL}${item.img}`}}
-                    resizeMode="center"
-                    style={{
-                      borderRadius: 10,
-                      width: 110,
-                      height: '100%',
-                      backgroundColor: 'white',
-                    }}
-                  />
-                </View>
 
-                <View
-                  style={{
-                    flexDirection: 'column',
-                    marginVertical: 10,
-                    marginHorizontal: 10,
-                  }}>
+        {cart.length ? (
+          cart
+            // .filter((item) => item.userId === userId)
+            .map((item) => {
+              return (
+                <View style={styles.bag2} key={item.id}>
+                  <CheckBox
+                    disabled={false}
+                    tintColors={{true: '#DB3022', false: '#9B9B9B'}}
+                    value={item.pick}
+                    onChange={() => pickCart(item.id)}
+                    style={{marginTop: 50}}
+                  />
+                  <View style={{height: '100%', paddingVertical: 10}}>
+                    <Image
+                      source={{uri: `${API_URL}${item.img}`}}
+                      resizeMode="center"
+                      style={{
+                        borderRadius: 10,
+                        width: 110,
+                        height: '100%',
+                        backgroundColor: 'white',
+                      }}
+                    />
+                  </View>
+
                   <View
                     style={{
-                      width: '100%',
-                      flexDirection: 'row',
-                      alignItems: 'center',
+                      flexDirection: 'column',
+                      marginVertical: 10,
+                      marginHorizontal: 10,
                     }}>
                     <View
                       style={{
-                        width: '40%',
-                        flexDirection: 'row',
-                        flexWrap: 'wrap',
-                      }}>
-                      <Text>{item.name}</Text>
-                    </View>
-                    <View style={{width: '60%', marginLeft: 10}}>
-                      <TouchableOpacity
-                        onPress={() =>
-                          Alert.alert(
-                            'Delete',
-                            'Are you sure to delete item in the bag?',
-                            [
-                              {
-                                text: 'Cancel',
-                                onPress: () => console.log('Cancel Pressed'),
-                                style: 'cancel',
-                              },
-                              {
-                                text: 'OK',
-                                onPress: () => deleteCart(item.id),
-                              },
-                            ],
-                            {cancelable: false},
-                          )
-                        }>
-                        <Icon name="delete" size={25} color={colors.red} />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                  <View style={{flexDirection: 'row', marginTop: 7}}>
-                    <Text>Color: {item.warna}</Text>
-                    <Text style={{marginLeft: 9}}>Sizes: {item.ukuran}</Text>
-                  </View>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      width: '100%',
-                      alignContent: 'center',
-                    }}>
-                    <View
-                      style={{
+                        width: '100%',
                         flexDirection: 'row',
                         alignItems: 'center',
-                        width: '30%',
                       }}>
-                      {item.qty === 1 ? (
-                        <TouchableOpacity style={styles.pickSize}>
-                          <Icon name="minus" size={20} color={colors.black} />
+                      <View
+                        style={{
+                          width: '40%',
+                          flexDirection: 'row',
+                          flexWrap: 'wrap',
+                        }}>
+                        <Text>{item.name}</Text>
+                      </View>
+                      <View style={{width: '60%', marginLeft: 10}}>
+                        <TouchableOpacity
+                          onPress={() =>
+                            Alert.alert(
+                              'Delete',
+                              'Are you sure to delete item in the bag?',
+                              [
+                                {
+                                  text: 'Cancel',
+                                  onPress: () => console.log('Cancel Pressed'),
+                                  style: 'cancel',
+                                },
+                                {
+                                  text: 'OK',
+                                  onPress: () => deleteCart(item.id),
+                                },
+                              ],
+                              {cancelable: false},
+                            )
+                          }>
+                          <Icon name="delete" size={25} color={colors.red} />
                         </TouchableOpacity>
-                      ) : (
-                        <TouchableOpacity style={styles.pickSize}>
-                          <Icon
-                            name="minus"
-                            size={20}
-                            color={colors.black}
-                            onPress={() => decreaseQuantity(item.id)}
-                          />
-                        </TouchableOpacity>
-                      )}
-                      <Text
-                        children={item.qty}
-                        size="l"
-                        style={{marginHorizontal: 4}}
-                      />
-                      <TouchableOpacity style={styles.pickSize}>
-                        <Icon
-                          name="plus"
-                          size={20}
-                          color={colors.black}
-                          onPress={() => increaseQuantity(item.id)}
-                        />
-                      </TouchableOpacity>
+                      </View>
+                    </View>
+                    <View style={{flexDirection: 'row', marginTop: 7}}>
+                      <Text>Color: {item.warna}</Text>
+                      <Text style={{marginLeft: 9}}>Sizes: {item.ukuran}</Text>
                     </View>
                     <View
                       style={{
-                        marginTop: 30,
-                        width: '70%',
-                        paddingBottom: 30,
+                        flexDirection: 'row',
+                        width: '100%',
+                        alignContent: 'center',
                       }}>
-                      <Text>{`Rp${(item.prc * item.qty).toLocaleString(
-                        'id-ID',
-                      )}`}</Text>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          width: '30%',
+                        }}>
+                        {item.qty === 1 ? (
+                          <TouchableOpacity style={styles.pickSize}>
+                            <Icon name="minus" size={20} color={colors.black} />
+                          </TouchableOpacity>
+                        ) : (
+                          <TouchableOpacity style={styles.pickSize}>
+                            <Icon
+                              name="minus"
+                              size={20}
+                              color={colors.black}
+                              onPress={() => decreaseQuantity(item.id)}
+                            />
+                          </TouchableOpacity>
+                        )}
+                        <Text
+                          children={item.qty}
+                          size="l"
+                          style={{marginHorizontal: 4}}
+                        />
+                        <TouchableOpacity style={styles.pickSize}>
+                          <Icon
+                            name="plus"
+                            size={20}
+                            color={colors.black}
+                            onPress={() => increaseQuantity(item.id)}
+                          />
+                        </TouchableOpacity>
+                      </View>
+                      <View
+                        style={{
+                          marginTop: 30,
+                          width: '70%',
+                          paddingBottom: 30,
+                        }}>
+                        <Text>{`Rp${(item.prc * item.qty).toLocaleString(
+                          'id-ID',
+                        )}`}</Text>
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>
-            );
-          })
+              );
+            })
         ) : (
           <View style={styles.empty}>
             <Image

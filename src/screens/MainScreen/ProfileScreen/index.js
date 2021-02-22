@@ -26,10 +26,10 @@ const ProfileScreen = ({navigation, logout}) => {
   // console.log('nyoba', email, fullname);
   // console.log('ini token', token);
 
-  const [alamat, setAlamat] = useState([]);
-  const [historyOrders, setHistoryOrders] = useState([]);
-  const [products, setProduct] = useState([]);
-  const [orders, setOrder] = useState([]);
+  const [alamat, setAlamat] = useState(0);
+  const [historyOrders, setHistoryOrders] = useState(0);
+  const [products, setProduct] = useState(0);
+  const [orders, setOrder] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
 
   const getProductsSeller = () => {
@@ -41,8 +41,7 @@ const ProfileScreen = ({navigation, logout}) => {
       })
       .then((res) => {
         const product = res.data.data;
-        setProduct(product);
-        console.log('GETPRODUCTSELLER', product);
+        setProduct(product.length);
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +57,7 @@ const ProfileScreen = ({navigation, logout}) => {
       })
       .then((res) => {
         const orderIncome = res.data.data;
-        setOrder(orderIncome);
+        setOrder(orderIncome.length);
       })
       .catch((err) => {
         console.log(err);
@@ -74,15 +73,15 @@ const ProfileScreen = ({navigation, logout}) => {
       })
       .then((res) => {
         const historyOrders = res.data.data;
-        setHistoryOrders(historyOrders);
+        setHistoryOrders(historyOrders.length);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const getAddressUser = async () => {
-    await axios
+  const getAddressUser = () => {
+    axios
       .get(`${API_URL}/address`, {
         headers: {
           'x-access-token': 'Bearer ' + token,
@@ -90,15 +89,15 @@ const ProfileScreen = ({navigation, logout}) => {
       })
       .then((res) => {
         const address = res.data.data;
-        setAlamat(address);
+        setAlamat(address.length);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const handleLogout = () => {
-    axios
+  const handleLogout = async () => {
+    await axios
       .delete(API_URL + '/auth/logout', {
         headers: {
           'x-access-token': 'Bearer ' + token,
@@ -115,21 +114,27 @@ const ProfileScreen = ({navigation, logout}) => {
   };
 
   useEffect(() => {
-    getHistoryOrders();
-    getAddressUser();
-    getProductsSeller();
-    getIncomeOrders();
-  }, []);
+    if (level === 1) {
+      getAddressUser();
+      getHistoryOrders();
+    } else {
+      getProductsSeller();
+      getIncomeOrders();
+    }
+  }, [user_id]);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      getAddressUser();
-      getHistoryOrders();
-      getProductsSeller();
-      getIncomeOrders();
+      if (level === 1) {
+        getAddressUser();
+        getHistoryOrders();
+      } else {
+        getProductsSeller();
+        getIncomeOrders();
+      }
     });
     return unsubscribe;
-  }, [navigation]);
+  }, [navigation, user_id]);
 
   return (
     <>
@@ -195,7 +200,7 @@ const ProfileScreen = ({navigation, logout}) => {
                 <View>
                   <Text children="My orders" size="xl" />
                   <Text
-                    children={`Already have ${historyOrders.length} orders`}
+                    children={`Already have ${historyOrders} orders`}
                     size="m"
                     color="gray"
                   />
@@ -212,11 +217,7 @@ const ProfileScreen = ({navigation, logout}) => {
                 onPress={() => navigation.navigate('Shipping address')}>
                 <View>
                   <Text children="Shipping address" size="xl" />
-                  <Text
-                    children={`${alamat.length} address`}
-                    size="m"
-                    color="gray"
-                  />
+                  <Text children={`${alamat} address`} size="m" color="gray" />
                 </View>
                 <View>
                   <Icon name="chevron-right" size={30} color={colors.gray} />
@@ -286,7 +287,7 @@ const ProfileScreen = ({navigation, logout}) => {
                 <View>
                   <Text children="View Product" size="xl" />
                   <Text
-                    children={`View all product seller, You Have ${products.length} products`}
+                    children={`View all product seller, You Have ${products} products`}
                     size="m"
                     color="gray"
                   />
@@ -305,7 +306,7 @@ const ProfileScreen = ({navigation, logout}) => {
                 <View>
                   <Text children="My orders" size="xl" />
                   <Text
-                    children={`Already have ${orders.length} orders`}
+                    children={`Already have ${orders} orders`}
                     size="m"
                     color="gray"
                   />
@@ -355,7 +356,12 @@ const ProfileScreen = ({navigation, logout}) => {
             </TouchableOpacity>
           </>
         )}
-        <Modal animationType="slide" transparent={true} hardwareAccelerated={true} statusBarTranslucent={true} visible={modalVisible}>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          // hardwareAccelerated={true}
+          statusBarTranslucent={true}
+          visible={modalVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Are you sure want to logout?</Text>
@@ -453,6 +459,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalView: {
     height: 200,

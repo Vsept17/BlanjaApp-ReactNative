@@ -39,6 +39,7 @@ const CheckOut = ({checkout, clearCart, navigation, route}) => {
   } = route.params;
   const [checkbox, setCheckbox] = useState(false);
   const [checkbox2, setCheckbox2] = useState(false);
+  const [alamat, setAlamat] = useState([]);
 
   const channel = 'notification';
 
@@ -64,8 +65,25 @@ const CheckOut = ({checkout, clearCart, navigation, route}) => {
       console.log('CHANNEL', channel_ids[0]);
       () => navigation.navigate('Home');
     });
+    getAddressUser();
     handleSubmit();
   }, []);
+
+  const getAddressUser = async () => {
+    await axios
+      .get(`${API_URL}/address`, {
+        headers: {
+          'x-access-token': 'Bearer ' + token,
+        },
+      })
+      .then((res) => {
+        const address = res.data.data[0];
+        setAlamat(address);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const transaction = async () => {
     await axios
@@ -127,6 +145,25 @@ const CheckOut = ({checkout, clearCart, navigation, route}) => {
             <View style={{marginTop: 10}}>
               <Text>{`${address}, ${city}`}</Text>
               <Text>{`${region}, ${zip_code}, ${country}`}</Text>
+            </View>
+          </View>
+        ) : route.params.id_address === undefined && alamat !== undefined ? (
+          <View style={styles.card}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 15,
+              }}>
+              <Text>{alamat.fullname}</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Shipping address')}>
+                <Text style={{color: 'red'}}>Change</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{marginTop: 10}}>
+              <Text>{`${alamat.address}, ${alamat.city}`}</Text>
+              <Text>{`${alamat.region}, ${alamat.zip_code}, ${alamat.country}`}</Text>
             </View>
           </View>
         ) : (

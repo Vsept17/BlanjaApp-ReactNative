@@ -12,7 +12,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Iconn from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../utils';
 import axios from 'axios';
-import {Rating, AirbnbRating} from 'react-native-ratings';
 import ActionSheet from 'react-native-actions-sheet';
 import {API_URL} from '@env';
 import {Rating} from 'react-native-ratings';
