@@ -158,14 +158,14 @@ const StackScreen = ({navigation}) => {
           name="Search"
           component={SearchScreen}
           options={{
-            headerShown: false,
+            headerShown: true,
           }}
         />
         <Stack.Screen
           name="Filter"
           component={FilterScreen}
           options={{
-            headerShown: false,
+            headerShown: true,
           }}
         />
         <Stack.Screen

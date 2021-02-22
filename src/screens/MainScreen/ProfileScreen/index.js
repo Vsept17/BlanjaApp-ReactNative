@@ -271,7 +271,7 @@ const ProfileScreen = ({navigation, logout}) => {
               <View style={{marginRight: 10}}>
                 <Image
                   style={styles.img}
-                  source={require('../../../assets/images/myprofile.png')}
+                  source={require('../../../assets/images/default-profile.png')}
                 />
               </View>
               <View style={{marginLeft: 10, justifyContent: 'center'}}>
