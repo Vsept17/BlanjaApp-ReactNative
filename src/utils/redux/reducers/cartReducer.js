@@ -22,6 +22,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       const inCart = state.cart.find((item) =>
         item.id === action.payload.id ? true : false,
       );
+      console.log('INCART', inCart);
       return {
         ...state,
         cart: inCart

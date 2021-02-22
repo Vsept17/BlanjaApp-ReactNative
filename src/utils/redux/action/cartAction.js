@@ -9,6 +9,7 @@ export const addToCart = (
   ukuran,
   warna,
   user_id,
+  userId,
 ) => {
   return {
     type: actionTypes.ADD_TO_CART,
@@ -21,6 +22,7 @@ export const addToCart = (
       ukuran: ukuran,
       warna: warna,
       user_id: user_id,
+      userId: userId,
       pick: true,
     },
   };
