@@ -13,7 +13,7 @@ import {
 import {HeaderHome} from '../../../components';
 import {Text} from '../../../components';
 import {IconStarAct} from '../../../assets/icons';
-import {Rating, AirbnbRating} from 'react-native-ratings';
+import {Rating} from 'react-native-ratings';
 import {colors} from '../../../utils';
 import {API_URL} from '@env';
 
@@ -140,13 +140,13 @@ const HomeScreen = ({navigation}) => {
                     />
                     <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
                       <View style={styles.rating}>
-                        <AirbnbRating
-                          count={rating}
-                          defaultRating={5}
-                          size={12}
-                          showRating={false}
+                        <Rating
+                          ratingCount={5}
+                          startingValue={rating}
+                          readonly={true}
+                          imageSize={15}
+                          style={{paddingRight: 5}}
                         />
-
                         <Text children={rating} />
                       </View>
                       <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
@@ -226,13 +226,13 @@ const HomeScreen = ({navigation}) => {
                     />
                     <View style={{paddingHorizontal: 7, paddingVertical: 5}}>
                       <View style={styles.rating}>
-                        <AirbnbRating
-                          count={rating}
-                          defaultRating={5}
-                          size={12}
-                          showRating={false}
+                        <Rating
+                          ratingCount={5}
+                          startingValue={rating}
+                          readonly={true}
+                          imageSize={15}
+                          style={{paddingRight: 5}}
                         />
-
                         <Text children={rating} />
                       </View>
                       <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>

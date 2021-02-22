@@ -40,6 +40,7 @@ const ProfileScreen = ({navigation, logout}) => {
       .then((res) => {
         const product = res.data.data;
         setProduct(product);
+        console.log('GETPRODUCTSELLER', product);
       })
       .catch((err) => {
         console.log(err);
@@ -120,10 +121,10 @@ const ProfileScreen = ({navigation, logout}) => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      getAddressUser(),
-        getHistoryOrders(),
-        getProductsSeller(),
-        getIncomeOrders();
+      getAddressUser();
+      getHistoryOrders();
+      getProductsSeller();
+      getIncomeOrders();
     });
     return unsubscribe;
   }, [navigation]);

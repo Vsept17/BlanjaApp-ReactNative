@@ -14,6 +14,7 @@ import {colors} from '../../utils';
 import axios from 'axios';
 import ActionSheet from 'react-native-actions-sheet';
 import {API_URL} from '@env';
+import {Rating} from 'react-native-ratings';
 
 // const BASE_URL = 'http://192.168.1.10:2005';
 const actionSheetRef = createRef();
@@ -175,14 +176,31 @@ export default function CatalogeScreen({navigation, route}) {
                 />
               </View>
               <View style={styles.rating}>
-                <Image source={require('../../assets/images/Star.png')} />
-
+                <Rating
+                  ratingCount={5}
+                  startingValue={item.rating}
+                  readonly={true}
+                  imageSize={15}
+                  style={{paddingRight: 5}}
+                />
                 <Text children={item.rating} />
               </View>
-              <View sytle={{width: '100%', flexDirection: 'row', flexWrap: 'wrap', marginVertical: 5}}>
+              <View
+                sytle={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  marginVertical: 5,
+                }}>
                 <Text style={styles.itemName}>{item.product_name}</Text>
               </View>
-              <View sytle={{width: '100%', flexDirection: 'row', flexWrap: 'wrap', marginVertical: 5}}>
+              <View
+                sytle={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  marginVertical: 5,
+                }}>
                 <Text style={styles.itemCode}>Rp.{item.product_price}</Text>
               </View>
             </View>

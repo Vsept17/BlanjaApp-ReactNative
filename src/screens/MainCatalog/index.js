@@ -11,7 +11,7 @@ import {ImgNotProduct} from '../../assets/images/no-product-found.png';
 import {FlatGrid} from 'react-native-super-grid';
 import axios from 'axios';
 import {API_URL} from '@env';
-import ActionSheet from 'react-native-actions-sheet';
+import {Rating} from 'react-native-ratings';
 
 const actionSheetRef = createRef();
 
@@ -140,6 +140,16 @@ const MainCatalogScreen = ({navigation, route}) => {
                   style={{borderRadius: 10, width: '100%', height: 100}}
                   resizeMode="contain"
                 />
+                <View style={styles.rating}>
+                  <Rating
+                    ratingCount={5}
+                    startingValue={item.rating}
+                    readonly={true}
+                    imageSize={15}
+                    style={{paddingRight: 5}}
+                  />
+                  <Text children={item.rating} />
+                </View>
                 <Text style={styles.itemName}>{item.product_name}</Text>
                 <Text style={styles.itemCode}>{item.product_price}</Text>
               </View>
@@ -173,6 +183,16 @@ const MainCatalogScreen = ({navigation, route}) => {
                   style={{borderRadius: 10, width: '100%', height: 100}}
                   resizeMode="contain"
                 />
+                <View style={styles.rating}>
+                  <Rating
+                    ratingCount={5}
+                    startingValue={item.rating}
+                    readonly={true}
+                    imageSize={15}
+                    style={{paddingRight: 5}}
+                  />
+                  <Text children={item.rating} />
+                </View>
                 <Text style={styles.itemName}>{item.product_name}</Text>
                 <Text style={styles.itemCode}>{item.product_price}</Text>
               </View>
@@ -205,6 +225,16 @@ const MainCatalogScreen = ({navigation, route}) => {
                   style={{borderRadius: 10, width: '100%', height: 100}}
                   resizeMode="contain"
                 />
+                <View style={styles.rating}>
+                  <Rating
+                    ratingCount={5}
+                    startingValue={item.rating}
+                    readonly={true}
+                    imageSize={15}
+                    style={{paddingRight: 5}}
+                  />
+                  <Text children={item.rating} />
+                </View>
                 <Text style={styles.itemName}>{item.product_name}</Text>
                 <Text style={styles.itemCode}>{item.product_price}</Text>
               </View>
@@ -240,7 +270,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     borderRadius: 5,
     padding: 10,
-    height: 150,
+    height: 190,
   },
   itemName: {
     fontSize: 16,
@@ -251,6 +281,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 12,
     color: '#000000',
+  },
+  rating: {
+    flexDirection: 'row',
+    marginTop: 5,
+    alignItems: 'center',
   },
 });
 

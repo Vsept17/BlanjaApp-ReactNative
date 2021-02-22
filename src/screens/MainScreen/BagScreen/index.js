@@ -44,10 +44,11 @@ const BagScreen = ({
   const [address, setAddress] = useState([]);
 
   const token = useSelector((state) => state.authReducer.token);
+  const user_id = useSelector((state) => state.cart.cart);
 
-  useEffect(() => {
-    getAddressUser();
-  }, []);
+  // useEffect(() => {
+  //   getAddressUser();
+  // }, []);
 
   if (pick.length !== 0) {
     pick.map((item) =>
@@ -63,9 +64,8 @@ const BagScreen = ({
         },
       })
       .then((res) => {
-        const address = res.data.data[0].id_address;
-        setAddress(address);
-        console.log('ADDRESS', address);
+        const alamat = res.data.data[0];
+        setAddress(alamat);
       })
       .catch((err) => {
         console.log(err);
@@ -74,7 +74,6 @@ const BagScreen = ({
 
   const sendData = () => {
     let invoice = Math.floor(Math.random() * 100001) + 1;
-    let alamat = address;
     let productId = cart
       .filter((item) => item.pick === true)
       .map((item) => {
@@ -89,7 +88,8 @@ const BagScreen = ({
     const kirim = {
       item: productId,
       transaction_code: invoice,
-      id_address: alamat,
+      seller_id: user_id[0].user_id,
+      id_address: '',
     };
 
     // axios
@@ -313,13 +313,20 @@ const BagScreen = ({
             }
             navigation.navigate(
               'CheckOut',
+              {
+                id_address: address.id_address,
+                fullname: address.fullname,
+                address: address.address,
+                city: address.city,
+                region: address.region,
+                zip_code: address.zip_code,
+                country: address.country,
+              },
               sendData(),
-              totalPrice,
-              // clearCart(),
             );
           }}
           style={styles.button}>
-          <Text>CheckOut</Text>
+          <Text>Checkout</Text>
         </TouchableHighlight>
       </View>
     </>
@@ -411,7 +418,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  console.log('LALAL', state.cart.cart);
+  console.log('lala', state.cart.cart);
   return {
     cart: state.cart.cart,
   };
