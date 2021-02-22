@@ -129,6 +129,21 @@ const StackScreen = ({navigation}) => {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          name="Forgot"
+          component={ForgotPasswordScreen}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Otp"
+          component={LoginForgot}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Reset"
+          component={ResetPasswordScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Cataloge"
           component={CatalogeScreen}
           options={({navigation}) => ({

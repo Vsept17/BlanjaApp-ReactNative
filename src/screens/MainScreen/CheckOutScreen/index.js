@@ -257,8 +257,8 @@ const CheckOut = ({checkout, clearCart, navigation, route}) => {
                     transaction(),
                       clearCart(),
                       showNotification(
-                        'Yeaah!',
-                        'Klik! untuk melihat lebih lanjut detail transaksi anda',
+                        'Congratulations!',
+                        'Your transaction successfull.',
                         channel,
                       ),
                       navigation.navigate('Success');

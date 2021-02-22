@@ -39,6 +39,12 @@ const authReducer = (state = INITIAL_STATE, action) => {
         password: action.payload.password,
         level: action.payload.level,
       };
+
+    case actionTypes.SETEMAIL:
+      return {
+        ...state,
+        email: action.payload.email,
+      };
     default:
       return state;
   }
