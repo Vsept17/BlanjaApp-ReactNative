@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ButtonSubmit, Text} from '../../components';
-import {Picker} from '@react-native-picker/picker';
+// import {Picker} from '@react-native-picker/picker';
 import {colors} from '../../utils';
 import {connect, useSelector} from 'react-redux';
 import {Rating, AirbnbRating} from 'react-native-ratings';

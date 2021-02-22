@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import {Button} from 'native-base';
 import {
   StyleSheet,
   View,
-  Button,
   Image,
   ScrollView,
+  Modal,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -29,6 +30,7 @@ const ProfileScreen = ({navigation, logout}) => {
   const [historyOrders, setHistoryOrders] = useState([]);
   const [products, setProduct] = useState([]);
   const [orders, setOrder] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const getProductsSeller = () => {
     axios
@@ -252,7 +254,9 @@ const ProfileScreen = ({navigation, logout}) => {
                 </View>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.btnLogout} onPress={handleLogout}>
+            <TouchableOpacity
+              style={styles.btnLogout}
+              onPress={() => setModalVisible(true)}>
               <Text color="white" size="xl">
                 Logout
               </Text>
@@ -341,13 +345,52 @@ const ProfileScreen = ({navigation, logout}) => {
                 </View>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.btnLogout} onPress={handleLogout}>
+            <TouchableOpacity
+              style={styles.btnLogout}
+              onPress={() => setModalVisible(true)}>
               <Text color="white" size="xl">
                 Logout
               </Text>
             </TouchableOpacity>
           </>
         )}
+        <Modal animationType="slide" transparent={true} hardwareAccelerated={true} statusBarTranslucent={true} visible={modalVisible}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Are you sure want to logout?</Text>
+              <View
+                style={{
+                  marginTop: 20,
+                  flexDirection: 'row',
+                  width: 250,
+                  justifyContent: 'space-between',
+                }}>
+                <Button
+                  style={{
+                    ...styles.closeButton,
+                    backgroundColor: colors.white,
+                    borderColor: colors.red,
+                    borderWidth: 1,
+                  }}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                  }}>
+                  <Text style={{...styles.textStyle, color: colors.red}}>
+                    No
+                  </Text>
+                </Button>
+                <Button
+                  style={{...styles.closeButton, backgroundColor: colors.red}}
+                  onPress={() => {
+                    handleLogout();
+                    setModalVisible(!modalVisible);
+                  }}>
+                  <Text style={styles.textStyle}>Yes</Text>
+                </Button>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </ScrollView>
     </>
   );
@@ -402,6 +445,56 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
     marginVertical: 20,
+  },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    height: 200,
+    width: 300,
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  closeButton: {
+    backgroundColor: '#6379F4',
+    height: 40,
+    width: 100,
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 25,
+  },
+  editWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginVertical: 10,
   },
 });
 

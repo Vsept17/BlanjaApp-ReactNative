@@ -6,7 +6,7 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+// import {Picker} from '@react-native-picker/picker';
 import axios from 'axios';
 import {API_URL} from '@env';
 import Text from '../../components/Text';
