@@ -31,8 +31,8 @@ import SplashScreen from './SplashScreen';
 
 import SuccessScreen from './SuccessScreen';
 
-import ProductSellerScreen from './MyProfileScreen/ProductSellerScreen';
 import AddProductSellerScreen from './MyProfileScreen/AddProductSellerScreen';
+import EditProductSellerScreen from "./MyProfileScreen/EditProductSellerScreen";
 import ChatScreen from './ChatScreen';
 
 export {
@@ -62,7 +62,7 @@ export {
   MainCatalogScreen,
   SplashScreen,
   SuccessScreen,
-  ProductSellerScreen,
+  EditProductSellerScreen,
   AddProductSellerScreen,
   ChatScreen,
   RatingAndReview,
