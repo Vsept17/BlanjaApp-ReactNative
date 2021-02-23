@@ -225,10 +225,10 @@ const AddProduct = ({navigation}) => {
     console.log('CATEGORY ', ctg);
     formatDataSizeToSend(size).map((element) => {
       data.append('sizes[]', JSON.stringify(element));
-    })
+    });
     formatDataColorToSend(color).map((element) => {
       data.append('colors[]', JSON.stringify(element));
-    })
+    });
     data.append('condition_id', cnd);
     data.append('product_price', prodPrice);
     data.append('product_qty', prodQty);
