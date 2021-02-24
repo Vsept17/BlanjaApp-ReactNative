@@ -48,5 +48,5 @@ Open [Blanja App](https://drive.google.com/file/d/1NyuUadxaMX5B6nriM81ZzTUWAATB_
 
 ### Link Backend
 
-To see backend project [Blanja-RESTful-API](hhttps://github.com/Vsept17/Blanja-RESTful-API)
+To see backend project [Blanja-RESTful-API](https://github.com/Vsept17/Blanja-RESTful-API)
 
