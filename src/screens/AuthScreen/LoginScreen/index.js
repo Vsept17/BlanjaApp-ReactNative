@@ -168,7 +168,7 @@ const LoginScreen = ({navigation, login}) => {
             secureTextEntry
             // style={{marginTop: 8}}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
             <View style={styles.forgot}>
               <Image
                 source={require('../../../assets/image/Vector.png')}
