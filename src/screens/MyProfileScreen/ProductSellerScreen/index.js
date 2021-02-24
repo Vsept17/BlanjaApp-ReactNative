@@ -110,11 +110,11 @@ const ProductSeller = ({navigation}) => {
                   marginVertical: 5,
                 }}>
                 <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('UpdateProductSeller', {
-                    itemId: item.id,
-                  });
-                }}
+                  onPress={() => {
+                    navigation.navigate('UpdateProductSeller', {
+                      itemId: item.id,
+                    });
+                  }}
                   style={[styles.btnEditDelete, {backgroundColor: '#77ff0e'}]}>
                   <Text color="black" size="l">
                     Edit
