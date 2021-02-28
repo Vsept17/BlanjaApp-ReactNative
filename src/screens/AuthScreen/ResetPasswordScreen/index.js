@@ -51,7 +51,7 @@ const ResetPassword = ({navigation}) => {
       <View style={styles.FormInput}>
         <Text
           color="red"
-          size="xl"
+          size="l"
           type="Bold"
           children="You need to change your password to activate your account"
           style={styles.text}

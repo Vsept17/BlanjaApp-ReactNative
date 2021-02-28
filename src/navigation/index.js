@@ -103,8 +103,10 @@ const MainProfileScreen = () => {
 };
 
 const StackScreen = ({navigation}) => {
+  const user_id = useSelector((state) => state.authReducer.user_id);
+
   return (
-    <SocketProvider>
+    <SocketProvider id={user_id}>
       <Stack.Navigator>
         <Stack.Screen
           initialRouteName="Splash"
@@ -126,21 +128,6 @@ const StackScreen = ({navigation}) => {
         <Stack.Screen
           name="Register"
           component={RegisterScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Forgot"
-          component={ForgotPasswordScreen}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="Otp"
-          component={LoginForgot}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Reset"
-          component={ResetPasswordScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -173,14 +160,14 @@ const StackScreen = ({navigation}) => {
           name="Search"
           component={SearchScreen}
           options={{
-            headerShown: true,
+            headerShown: false,
           }}
         />
         <Stack.Screen
           name="Filter"
           component={FilterScreen}
           options={{
-            headerShown: true,
+            headerShown: false,
           }}
         />
         <Stack.Screen
@@ -226,13 +213,29 @@ const StackScreen = ({navigation}) => {
         <Stack.Screen
           name="Chat"
           component={ChatScreen}
-          options={{
-            headerShown: false,
-          }}
+          // options={{
+          //   headerShown: false,
+          // }}
         />
         <Stack.Screen
           name="Shipping address"
           component={ShippingAddressScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Forgot"
+          component={ForgotPasswordScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Otp"
+          component={LoginForgot}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Reset"
+          component={ResetPasswordScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -391,7 +391,7 @@ const EditProduct = ({navigation, route}) => {
         </View>
       </ScrollView>
 
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
         <TouchableOpacity
           onPress={() => {
             photoSheetRef.current?.setModalVisible();
@@ -435,29 +435,32 @@ const EditProduct = ({navigation, route}) => {
             );
           })}
         </View>
-        <TouchableOpacity
-          style={{
-            elevation: 8,
-            backgroundColor: '#fff',
-            borderRadius: 10,
-            paddingVertical: 5,
-            width: 100,
-            margin: 5,
-          }}
-          onPress={() => {
-            colorSheetRef.current?.setModalVisible();
-          }}>
-          <Text
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <TouchableOpacity
             style={{
-              fontSize: 18,
-              color: '#000',
-              fontWeight: 'bold',
-              alignSelf: 'center',
-              textTransform: 'uppercase',
+              elevation: 8,
+              backgroundColor: 'red',
+              borderRadius: 50,
+              // paddingHorizontal: 10,
+              paddingVertical: 5,
+              width: 120,
+              margin: 5,
+            }}
+            onPress={() => {
+              colorSheetRef.current?.setModalVisible();
             }}>
-            Color
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 18,
+                color: 'white',
+                fontWeight: 'bold',
+                alignSelf: 'center',
+                textTransform: 'uppercase',
+              }}>
+              Pick Color
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View>
@@ -495,29 +498,31 @@ const EditProduct = ({navigation, route}) => {
             );
           })}
         </View>
-        <TouchableOpacity
-          style={{
-            elevation: 8,
-            backgroundColor: '#fff',
-            borderRadius: 10,
-            paddingVertical: 5,
-            width: 100,
-            margin: 5,
-          }}
-          onPress={() => {
-            sizeSheetRef.current?.setModalVisible();
-          }}>
-          <Text
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <TouchableOpacity
             style={{
-              fontSize: 18,
-              color: '#000',
-              fontWeight: 'bold',
-              alignSelf: 'center',
-              textTransform: 'uppercase',
+              elevation: 8,
+              backgroundColor: 'red',
+              borderRadius: 50,
+              paddingVertical: 5,
+              width: 120,
+              margin: 5,
+            }}
+            onPress={() => {
+              sizeSheetRef.current?.setModalVisible();
             }}>
-            Size
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 18,
+                color: 'white',
+                fontWeight: 'bold',
+                alignSelf: 'center',
+                textTransform: 'uppercase',
+              }}>
+              Pick Size
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={styles.picker}>
@@ -748,7 +753,9 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'red',
+    borderRadius: 50,
     marginBottom: 10,
+    paddingHorizontal: 10,
     height: 40,
     justifyContent: 'center',
     marginRight: 10,

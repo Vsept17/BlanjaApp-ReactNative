@@ -96,8 +96,9 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   FormInput: {
-    justifyContent: 'center',
-    height: '80%',
+    // justifyContent: 'center',
+    marginVertical: 50,
+    height: '100%',
   },
   formI: {
     paddingVertical: 10,
@@ -115,6 +116,7 @@ const styles = StyleSheet.create({
 
   pass: {
     marginBottom: 15,
+    fontSize: 16
   },
 });
 

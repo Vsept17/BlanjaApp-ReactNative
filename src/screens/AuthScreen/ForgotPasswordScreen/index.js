@@ -12,8 +12,8 @@ import {API_URL} from '@env';
 import {colors} from '../../../utils';
 
 //redux
-import { connect } from 'react-redux';
-import { setEmailForgot } from '../../../utils/redux/action/authAction';
+import {connect} from 'react-redux';
+import {setEmailForgot} from '../../../utils/redux/action/authAction';
 
 const ForgotPassword = ({navigation, setEmailForgot}) => {
   // const API_URL = 'http://192.168.1.2:8007';
@@ -48,8 +48,8 @@ const ForgotPassword = ({navigation, setEmailForgot}) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text size="xl" type="Bold" style={styles.forgotText}>
+    <View style={styles.container}>
+      <Text size="xl2" type="Bold" style={styles.forgotText}>
         FORGOT PASSWORD
       </Text>
       <View style={styles.form}>
@@ -82,15 +82,17 @@ const ForgotPassword = ({navigation, setEmailForgot}) => {
           keyboardType="email-address"
           style={styles.formInput}
         />
-        <ButtonSubmit
-          onPress={handleSubmit}
-          title="SEND"
-          bg="red"
-          size="l"
-          style={styles.btnSend}
-        />
+        <View style={{marginTop: 50}}>
+          <ButtonSubmit
+            onPress={handleSubmit}
+            title="SEND"
+            bg="red"
+            size="l"
+            
+          />
+        </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -98,16 +100,17 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     backgroundColor: '#E5E5E5',
-    paddingVertical: 25,
+    // paddingVertical: 25,
     paddingHorizontal: 10,
   },
   form: {
-    height: '80%',
-    justifyContent: 'center',
+    height: '100%',
+    // justifyContent: 'center',
+    // backgroundColor: 'yellow',
   },
   forgotText: {
     fontWeight: 'bold',
-    marginBottom: 50,
+    marginVertical: 50,
   },
   forgotInfo: {
     fontWeight: 'bold',
@@ -139,10 +142,9 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setEmailForgot: (email) => 
-    dispatch(setEmailForgot(email)),
-  }
-}
+    setEmailForgot: (email) => dispatch(setEmailForgot(email)),
+  };
+};
 
 export default connect(null, mapDispatchToProps)(ForgotPassword);
 
